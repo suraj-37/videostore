@@ -12,48 +12,59 @@
 
 </head>
 
-<body class="m-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        Categories
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        {% for category in categorys %}
 
-                        <li class="list-group-item">{{category.name}}</li>
+<body>
+    <div class>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mx-auto h1">Video store</span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="m-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-header">
+                            Categories
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for category in categorys %}
+
+                            <li class="list-group-item">{{category.name}}</li>
+
+                            {% endfor %}
+
+                            <a href="{% url 'add' %}" class="btn btn-outline-dark btn-sm m-1">Add Categories</a>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        {% for video in videos %}
+                        <div class="col">
+                            <!--Card-->
+                            <div class="card">
+                                <!--Card image-->
+                                <video class="img-fluid" playsinline autoplay muted loop>
+                            <source src="{{video.video.url}} " type="video/mp4">
+                            </video>
+                                <!--Card content-->
+                                <div class="card-body">
+                                    <small>Category:{{video.Category.name}}</small>
+                                </div>
+                                <a href="{%url 'video' video.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        {%empty%}
+                        <h3>No photos..</h3>
 
                         {% endfor %}
-
-                        <a href="{% url 'add' % }" class="btn btn-outline-dark btn-sm m-1">View</a>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    {% for video in videos %}
-                    <div class="col-md-6 my-2">
-                        <!--Card-->
-                        <div class="card">
-                            <!--Card image-->
-                            <video class="img-fluid" playsinline autoplay muted loop>
-    <source src="{{video.video.url}} " type="video/mp4">
-    </video>
-                            <!--Card content-->
-                            <div class="card-body">
-                                <small>Category:{{video.Category.name}}</small>
-                            </div>
-                            <a href="{%url 'video' video.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                        </div>
-                        <!--/.Card-->
                     </div>
-                    {%empty%}
-                    <h3>No photos..</h3>
-
-                    {% endfor %}
                 </div>
             </div>
         </div>
