@@ -19,9 +19,9 @@
                 <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
                 <div style="height:90vh;">
                     <video style="max-width: 100%; max-height: 100%;" class="img-fluid" playsinline autoplay muted loop>
-                        <source src="https://static-cse.canva.com/video/822767/stock-videos.mp4" type="video/mp4">
+                        <source src="{{videos.video.url}}" type="video/mp4">
                         </video>
-                    <p>this is a video</p>
+                    <p>{{videos.description}} </p>
                 </div>
             </div>
         </div>
